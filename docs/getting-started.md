@@ -49,8 +49,8 @@ mpi4cloud create \
 > Note: The default instance name is `mpi4cloud-cluster`,
 > but you can change it with the `--cluster-name` flag.
 > Similarly, the default AWS AMI used is the latest Ubuntu 20.04 image,
-> but you can use a custom AMI with `--image-id`. More on this in
-> the [commands page](commands.md).
+> but you can use a custom AMI with `--image-id`.
+> You can run `mpi4cloud run --help` for more details on default options.
 
 ## Launch an Azure cluster
 
@@ -91,10 +91,10 @@ mpi4cloud run --cluster-name my-cluster -- -np 4 python3 main.py
 All flags before the `--` are passed to _mpi4cloud_ and the ones after
 are passed to `mpirun`.
 
-> Tip: You can use the `--oversubscribe` `mpirun` flag to use more nodes
-> than there are total processors.
-> This comes in handy when testing out programs before scaling up.
-> You can find full documentation of `mpirun` [here](https://www.open-mpi.org/doc/v4.1/man1/mpirun.1.php).
+> Note: the `-np` flag tells `mpirun` how many processes to launch.
+> You do not need to provide a hostfile; it is generated for you.
+> Check out the [mpirun documentation](https://www.open-mpi.org/doc/v4.1/man1/mpirun.1.php)
+> for more control over how processes are mapped to nodes (aka "hosts").
 
 
 ## Provisioning a cluster
@@ -142,11 +142,28 @@ mpi4cloud ssh <instance-id>
 
 ## Working with Docker
 
-In general, VM images are relatively stable
-and most projects can get away with running directly on the host OS.
+In general, most projects can get away with running directly on the host OS,
+installing the necessary dependencies with `setup.sh`.
 
-However, you made need more fine-grain control over the dependencies
+However, you may need more fine-grain control over the dependencies
 in your application, especially if you are working with multiple collaborators
 or switching between on-prem and cloud environments.
 
-todo
+_mpi4cloud_ provides the `run-docker` command to launch a job using Docker
+containers.
+
+For example, to run a job using the latest PyTorch container,
+you would run:
+
+```bash
+mpi4cloud run-docker --nodes 4 -- pytorch/pytorch
+```
+
+To use your own [Dockerfile](https://docs.docker.com/engine/reference/builder/),
+you would replace the image name with `.`.
+However, _mpi4cloud_ will automatically look for a Dockerfile in the
+root directory of your project, so you can just run:
+
+```bash
+mpi4cloud run-docker --nodes 4
+```
