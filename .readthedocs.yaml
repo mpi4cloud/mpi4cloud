@@ -10,6 +10,3 @@ build:
 
 mkdocs:
   configuration: mkdocs.yml
-nav:
-  - Home: index.md
-theme: readthedocs
