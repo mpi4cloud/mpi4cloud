@@ -1,6 +1,6 @@
 site_name: mpi4cloud docs
 site_url: https://mpi4cloud.readthedocs.io
 nav:
-  - Home: index.md
-  - Commands: commands.md
+  - Overview: index.md
+  - Getting Started: getting-started.md
 theme: readthedocs
