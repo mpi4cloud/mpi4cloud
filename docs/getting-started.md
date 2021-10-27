@@ -18,7 +18,7 @@ todo
 ```
 
 
-Then, log in to your _mpi4cloud_ account with the CLI:
+Then, log in to your mpi4cloud account with the CLI:
 
 ```bash
 mpi4cloud login
@@ -30,7 +30,7 @@ mpi4cloud login
 ## Launch an AWS cluster
 
 First, you need to install and configure the AWS CLI so that
-_mpi4cloud_ can launch, provision, and monitor instances for you.
+mpi4cloud can launch, provision, and monitor instances for you.
 You should follow the [installation instructions](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 and then the [configuration instructions](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 
@@ -63,7 +63,7 @@ todo
 
 ## Run your first job
 
-_mpi4cloud_ attempts to create a seamless development
+mpi4cloud attempts to create a seamless development
 experience by zipping your local directory (ignoring
 whatever Git ignores),
 uploading it to all VMs in the cluster,
@@ -78,7 +78,7 @@ mpi4cloud run -np 4 python3 main.py
 
 All arguments following `run` are passed to `mpirun`.
 However, you will sometimes need to provide arguments to
-_mpi4cloud_ (i.e., to change the cluster name).
+mpi4cloud (i.e., to change the cluster name).
 To do this, bash provides a "[double dash](https://unix.stackexchange.com/questions/11376/what-does-double-dash-mean)"
 for separating these options.
 
@@ -88,7 +88,7 @@ For example, to specify the name of the cluster to run the job on, you'd run:
 mpi4cloud run --cluster-name my-cluster -- -np 4 python3 main.py
 ```
 
-All flags before the `--` are passed to _mpi4cloud_ and the ones after
+All flags before the `--` are passed to mpi4cloud and the ones after
 are passed to `mpirun`.
 
 > Note: the `-np` flag tells `mpirun` how many processes to launch.
@@ -112,7 +112,7 @@ sudo apt update
 sudo apt upgrade -y
 ```
 
-> Note: an MPI implementation and the _mpi4cloud_ Python
+> Note: an MPI implementation and the mpi4cloud Python
 > library along with some other useful packages
 > for working with MPI in Python will automatically be installed for you.
 
@@ -149,7 +149,7 @@ However, you may need more fine-grain control over the dependencies
 in your application, especially if you are working with multiple collaborators
 or switching between on-prem and cloud environments.
 
-_mpi4cloud_ provides the `run-docker` command to launch a job using Docker
+mpi4cloud provides the `run-docker` command to launch a job using Docker
 containers.
 
 For example, to run a job using the latest PyTorch container,
@@ -161,7 +161,7 @@ mpi4cloud run-docker --nodes 4 -- pytorch/pytorch
 
 To use your own [Dockerfile](https://docs.docker.com/engine/reference/builder/),
 you would replace the image name with `.`.
-However, _mpi4cloud_ will automatically look for a Dockerfile in the
+However, mpi4cloud will automatically look for a Dockerfile in the
 root directory of your project, so you can just run:
 
 ```bash
@@ -170,7 +170,7 @@ mpi4cloud run-docker --nodes 4
 
 ## Next Steps
 
-To see examples of how to use _mpi4cloud_
+To see examples of how to use mpi4cloud
 with a variety of tools leveraging model/data
 parallelism, check out the [GitHub repo](https://github.com/mpi4cloud/mpi4cloud/tree/main/examples).
 
