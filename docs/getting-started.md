@@ -167,3 +167,12 @@ root directory of your project, so you can just run:
 ```bash
 mpi4cloud run-docker --nodes 4
 ```
+
+## Next Steps
+
+To see examples of how to use _mpi4cloud_
+with a variety of tools leveraging model/data
+parallelism, check out the [GitHub repo](https://github.com/mpi4cloud/mpi4cloud/tree/main/examples).
+
+If you have issues running something or seek general advice,
+feel free to [leave an issue](https://github.com/mpi4cloud/mpi4cloud/issues).
